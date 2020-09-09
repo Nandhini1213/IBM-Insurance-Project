@@ -1,0 +1,28 @@
+1.CUSTOMER TABLE
+
+ create table customer(Customer_Id INT(40) PRIMARY KEY AUTO_INCREMENT,Customer_Name VARCHAR(200) NOT NULL,Email_Id VARCHAR(255) NOT NULL,Password VARCHAR(150) NOT NULL,Contact_No VARCHAR(100) NOT NULL,Address VARCHAR(200) NOT NULL,State VARCHAR(200) NOT NULL,City VARCHAR(200) NOT NULL,Pincode INT(100) NOT NULL,gender VARCHAR(255) NOT NULL,DOB VARCHAR(255) NOT NULL,Security_Question VARCHAR(255) NOT NULL,Security_Answer VARCHAR(100) NOT NULL);
+
+-------------------------------------------------------------------------------
+2.PLANS TABLE
+
+create table plans(Plan_id int(40) primary key,Plan_Type VARCHAR(200)NOT NULL,Plan_Duration VARCHAR(150) NOT NULL,Plan_Amount INT(150) NOT NULL);
+
+--------------------------------------------------------------------------------
+3. USER TABLE
+
+
+ 
+create table user(Policy_No INT(100) PRIMARY KEY NOT NULL AUTO_INCREMENT,Customer_Id INT,FOREIGN KEY(Customer_Id) REFERENCES customer(Customer_Id),Aadhar_No INT(150) NOT NULL,Pan_No VARCHAR(200) NOT NULL,Plan_id INT,FOREIGN KEY(Plan_id) REFERENCES plans(Plan_Id),Vehicle_Model VARCHAR(150) NOT NULL,Plate_No VARCHAR(150) NOT NULL,Engine_No VARCHAR(200) NOT NULL,Chassis_No INT(100) NOT NULL,Start_Date VARCHAR(200) NOT NULL,End_Date VARCHAR(200) NOT NULL);
+
+
+-----------------------------------------------------------------------------------
+
+4.STATUS TABLE
+
+create table status(Policy_No INT,FOREIGN KEY(Policy_No) REFERENCES user(Policy_No),Policy_Status VARCHAR(200) NOT NULL,Callback_Status VARCHAR(200),Claim_Status VARCHAR(200),Queries VARCHAR(255));
+
+------------------------------------------------------------------------------------
+
+5.STAFFPROFILE
+
+create table Staff(Staff_Id INT(200) PRIMARY KEY NOT NULL AUTO_INCREMENT,Staff_Name VARCHAR(200) NOT NULL,StaffEmail_Id VARCHAR(255) NOT NULL,StaffContact_No INT(100) NOT NULL,Staff_Address VARCHAR(200) NOT NULL,Staff_Qualification VARCHAR(200) NOT NULL,Staff_DOB varchar(100) NOT NULL);
